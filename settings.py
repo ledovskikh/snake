@@ -40,7 +40,7 @@ RECORDS_FILE = "records.csv"
 # }
 
 DIFFICULTY_LEVELS = {
-    "Легкий": {"speed": 5, "obstacles": 0},
+    "Легкий": {"speed": 2, "obstacles": 0},
     "Средний": {"speed": 10, "obstacles": 10},  # 10 препятствий
     "Сложный": {"speed": 15, "obstacles": 20},  # 20 препятствий
 }

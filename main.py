@@ -1,10 +1,12 @@
 import pygame
 import sys
-from settings import WINDOW_WIDTH, WINDOW_HEIGHT, BLACK, FPS
+import random
+from settings import WINDOW_WIDTH, WINDOW_HEIGHT, BLACK
 from snake import Snake
 from fruit import Fruit
 from menu import Menu
 from records import save_record
+from settings import DIFFICULTY_LEVELS
 
 
 def get_pause_menu_option_at_pos(mouse_pos, options, option_rects):
@@ -72,15 +74,15 @@ def show_final_screen(screen, score):
                     return "menu"  # Возвращаемся в меню
 
 
-def create_obstacles(level, width, height):
-    obstacles_count = DIFFICULTY_LEVELS[level]["obstacles"]
-    obstacles = []
-    for _ in range(obstacles_count):
-        # Генерируем случайную позицию для препятствия
-        pos_x = random.randint(0, width / SNAKE_SIZE - 1) * SNAKE_SIZE
-        pos_y = random.randint(0, height / SNAKE_SIZE - 1) * SNAKE_SIZE
-        obstacles.append(Obstacle((pos_x, pos_y)))
-    return obstacles
+# def create_obstacles(level, width, height):
+#     obstacles_count = DIFFICULTY_LEVELS[level]["obstacles"]
+#     obstacles = []
+#     for _ in range(obstacles_count):
+#         # Генерируем случайную позицию для препятствия
+#         pos_x = random.randint(0, width / SNAKE_SIZE - 1) * SNAKE_SIZE
+#         pos_y = random.randint(0, height / SNAKE_SIZE - 1) * SNAKE_SIZE
+#         obstacles.append(Obstacle((pos_x, pos_y)))
+#     return obstacles
 
 
 def main():
@@ -150,7 +152,7 @@ def main():
             if action == "menu":
                 game_state = "menu"  # Переход обратно в начальное меню
 
-        clock.tick(10 + 5 * DIFFICULTY_LEVELS[current_difficulty]["speed"])
+        clock.tick(10 + 5 * DIFFICULTY_LEVELS[menu.selected_difficulty]["speed"])
 
 
 if __name__ == "__main__":
